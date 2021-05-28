@@ -1,0 +1,25 @@
+<%- include("../partials/header") %>
+
+<div class="container" style="padding-top: 2%;">
+    <table class="table table-hover table-striped table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">S.no.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+            <th scope="col">Level</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% for(var x in result) { %>
+                <tr>
+                    <th scope="row"><%= Number(x)+1 %></th>
+                    <td><%= result[x].username %></td>
+                    <td><%= result[x].score %></td>
+                    <td><%= result[x].level %></td>
+                </tr>
+            <% } %>
+        </tbody>
+      </table>
+</div>
+<%- include("../partials/footer") %>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+       body, html {
+          height: 100%;
+          overflow: hidden;
+        }
+
+       .vertical-center {
+          min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+          min-height: 100vh; /* These two lines are counted as one :-)       */
+        
+          display: flex;
+          align-items: center;
+        }
+
+      .bg {
+          /* The image used */
+          background-image: url("https://images.unsplash.com/photo-1470506926202-05d3fca84c9a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dHJlYXN1cmUlMjBodW50fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+        
+          /* Full height */
+          height: 100%;
+        
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+      }
+
+      .content{
+          text-align: center;
+          padding-top: 18%;
+      }
+
+      hr{
+          border: 1px solid black;
+          width: 20em;
+      }
+    </style>
+    <title>Blaze-o-IQ</title>
+</head>
+<body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark absolute">
+        <a class="navbar-brand" href="/">Blaze-o-IQ</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/Game/rankings">LeaderBoard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Game/about">About</a>
+            </li>
+          </ul>
+          <ul class="nav justify-content-end">
+              <% if(currentUser == undefined) { %>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/signup">SignUp</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/auth/login">Login</a>
+            </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/game/user">Hi <%= currentUser.username %></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/auth/logout">Logout</a>
+                </li>
+            <% } %>
+          </ul>
+        </div>
+      </nav>
+      <div class="bg img-fluid">
+        <div class="col-md-12 ">
+          <div class="content">
+            <h1>
+              Welcome to Blaze-o-IQ.
+            </h1>
+            <hr>
+            <% if(currentUser == undefined) { %>
+                <a href="/auth/login" class="btn btn-dark btn-lg">Get Started</a>
+              <% } else { %>
+                <a href="/game/user" class="btn btn-dark btn-lg">Get Started</a>
+              <% } %>
+          </div>
+        </div> 
+      </div>
+      <%- include("./partials/footer") %>
+</body>
+</html>
